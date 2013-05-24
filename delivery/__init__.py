@@ -2,6 +2,8 @@ from django.conf import settings
 from prices import Price
 from satchless.item import Item
 
+from .fedex.courier import Courier as FedexCourier
+
 
 class BaseDelivery(Item):
 
@@ -27,3 +29,13 @@ class DummyShipping(BaseDelivery):
 class DigitalDelivery(BaseDelivery):
 
     pass
+
+
+class FedexDelivery(BaseDelivery):
+
+    def __unicode__(self):
+        return u'Fedex shipping'
+
+    def get_price_per_item(self, **kwargs):
+        courier = FedexCourier(self.group)
+        return courier.get_cost()

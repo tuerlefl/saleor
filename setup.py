@@ -34,7 +34,8 @@ setup(
         'South>=0.7.6',
         'unidecode',
         'requests>=1.2.0',
-        'django-payments>=0.3,<0.4a0'],
+        'django-payments>=0.3,<0.4a0',
+        'fedex.py'],
     extras_require={
         'lint': ['pylint==0.26.0', 'django-lint==dev']},
     dependency_links=[
